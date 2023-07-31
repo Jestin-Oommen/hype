@@ -1,12 +1,20 @@
 import React from 'react'
 import '../CSS FILES/category.css'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 export default function Category(props) {
+  const navigate = useNavigate();
+  const routeToProducts = () =>{
+    
+
+    navigate(`/products/${props.gender}/${props.type}`);
+
+  }
   return (
     <>
     <div className='prophead'>
 
-    <div className='category-card'>
+    <div className='category-card' onClick={routeToProducts}>
       
       <div className='prop'> <img src={props.imgsrc} alt={props.altimgname} /> </div>   
 

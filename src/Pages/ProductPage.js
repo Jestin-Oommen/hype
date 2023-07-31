@@ -4,11 +4,17 @@ import ProductDetails from '../Components/PRODUCT PREVIEW PAGE COMPONENTS/JS FIL
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import './ProductPage.css';
+import { useParams } from 'react-router-dom';
 
 export default function ProductPage() {
   useEffect(() => {
     document.title = "Hype - Product Preview";
   }, []);
+
+  // Get the details from params
+  const { name, price } = useParams();
+
+
   return (
     <>
 
@@ -21,7 +27,7 @@ export default function ProductPage() {
             </div>
 
             <div>
-                <ProductDetails></ProductDetails>
+                <ProductDetails name={name} price={price}></ProductDetails>
             </div>
         </div>
         <Footer/>

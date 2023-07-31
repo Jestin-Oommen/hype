@@ -8,6 +8,7 @@
   transition: background-color 0.5s ease, color 1s ease; /* Slow transition */
   margin-bottom: 75px;
 }
+
 .text{
   font-size: xx-large;
   padding-left: 13px;

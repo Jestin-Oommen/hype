@@ -6,7 +6,11 @@ import model3 from '../IMAGES/model3.webp'
 import model4 from '../IMAGES/model4.webp'
 import model5 from '../IMAGES/model5.webp'
 
+
+
 export default function ProductPreview() {
+
+    
   return (
     <div>
         {/* Outer Div Of Product Image */}

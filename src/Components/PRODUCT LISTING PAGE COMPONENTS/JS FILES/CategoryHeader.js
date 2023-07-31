@@ -13,7 +13,7 @@ export default function CategoryHeader(props) {
                 <div className="header-title"><h3>{props.category}</h3></div>
 
                 {/* Number of results of category */}
-                <div className="header-results"><h4>Showing 1-16 of 200 results</h4></div>
+                <div className="header-results"><h4>Products Available - {props.nresults} results</h4></div>
             </div>
 
 

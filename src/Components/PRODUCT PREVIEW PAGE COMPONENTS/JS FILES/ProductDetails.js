@@ -6,21 +6,51 @@ import deliveryicon from '../IMAGES/delivery_icon.png'
 import giftbox from '../IMAGES/gift_box.png'
 import shakehand from '../IMAGES/shake_hand.png'
 import payment from '../IMAGES/payment.png'
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from "../../../store/slices/CartSlice";
 
-export default function ProductDetails() {
+// Firebase imports
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../config/firebase-config";
+
+
+export default function ProductDetails(props) {
+
+  // Create a dispatch to send data to the config store
+  const dispatch = useDispatch();
+  const userID = useSelector(user => {
+    try{
+      console.log(user.users.users.user.uid)
+      return user.users.users.user.uid
+    }
+    catch{
+      return null
+    }})
+
+    // Fetch list fof items
+    const cartItems = useSelector(state => state.cart.cartItems)
+  
+
+  // Function dispatch props to config store using addToCart which creates a slice
+  const handleAddToCart = async() =>{
+    dispatch(addToCart(props))
+    
+    await setDoc(doc(db, 'Cart', userID), {cart: cartItems})
+  } 
+
   return (
     <div>
       {/* Outer div of product details */}
       <div className="product_details_div">
         {/* Has name of the product */}
         <div className="product_name_div">
-          <h3>Short black skirt</h3>
+          <h3>{props.name}</h3>
         </div>
 
         {/* Holds the price and the discount of product */}
         <div className="product_price_div">
           <div>
-            <h4>Rs. 2,199</h4>
+            <h4>Rs. {props.price}</h4>
           </div>
           <div className="discount_msg">
             <div>
@@ -102,7 +132,7 @@ export default function ProductDetails() {
         </div>
 
         {/* Add to cart button */}
-        <div className="add_to_cart_button_div">
+        <div className="add_to_cart_button_div" onClick={handleAddToCart}>
           <div>
             <img src={icontext} alt="icon"></img>
           </div>

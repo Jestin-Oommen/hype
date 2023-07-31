@@ -3,7 +3,6 @@ import HypeCart from './HypeCart'
 import PaymentPortal from './PaymentPortal'
 import '../CSS FILES/CartPage.css'
 
-
 export default function CartPagecomp() {
   return (
     <div className='cart-page'>

@@ -7,8 +7,69 @@ import gpay from '../IMAGES/google-pay 1.png'
 import razorpay from '../IMAGES/razorpaypng 1.png'
 import mastercard from '../IMAGES/mastercard 1.png'
 import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react'
+// import axios from 'axios'
+import PaymentGateway from './PaymentGateway' 
+
 
 export default function PaymentPortal() {
+    // Script loading function
+    function loadScript(src) {
+      return new Promise((resolve) => {
+          const script = document.createElement("script");
+          script.src = src;
+          script.onload = () => {
+              resolve(true);
+          };
+          script.onerror = () => {
+              resolve(false);
+          };
+          document.body.appendChild(script);
+      });
+}
+
+  useEffect(() => {
+    async function initializeRazorpay() {
+      const res = await loadScript(
+        "https://checkout.razorpay.com/v1/checkout.js"
+      );
+
+      if (!res) {
+        alert("Razorpay SDK failed to load. Are you online?");
+      }
+    }
+
+    initializeRazorpay();
+  }, []);
+
+
+    // Fetching the userID of user logged in
+    const userID = useSelector(user => {
+        try{
+          console.log(user.users.users.user.uid)
+          return user.users.users.user.uid
+        }
+        catch{
+          return false
+        }})
+    
+        // Fetch the statr from config store using useSelector
+        const cartItems = useSelector(state => state.cart.cartItems);
+
+        // Calculate the sum of items price
+        let orderValue = cartItems.reduce((sum, item) => sum + item.price, 0);
+        let deliveryCost = 150;
+        let totalCost = orderValue + deliveryCost;
+        let totalCostInPaisa = totalCost * 100;
+
+        // Object to pass to payment gateway
+        const paymentInfo = {
+          "totalCostInPaisa":totalCostInPaisa,
+          "userID": userID,
+          "cartItems": cartItems,
+        }
+   
   return (
     <div>
         {/* Outer portion of the payment div */}
@@ -19,34 +80,35 @@ export default function PaymentPortal() {
                 </div>
 
                 {/* Holds login button */}
-                <div className="login_div">
-                    <div><button><b>Login</b></button></div>
-                </div>
+                {userID?<p></p>:(
+                    <div className="login_div">
+                        <div><button><b>Login</b></button></div>
+                    </div>)}
 
                 {/* Holds the order statement*/}
                 <div className="order_div">
                     <div className="order_val_div">
                         <div className='order_value'><p> Order Value</p></div>
-                        <div className='order_price'><p>$22</p></div>
+                        <div className='order_price'><p>₹‎{orderValue}</p></div>
                     </div>
 
                     {/* delivery and money */}
                     <div className='delivery_division'>
                         <div><p> Delivery</p></div>
-                        <div className='order_price'><p>$22</p></div>
+                        <div className='order_price'><p>₹‎{deliveryCost}</p></div>
                     </div>
 
                     <div><hr /></div> 
                     
                     <div className="total_div">
                         <div><b>Total</b></div>
-                        <div><b>$44</b></div>
+                        <div><b>₹‎{totalCost}</b></div>
                     </div>
                 </div>
 
                 {/* Holds the checkout button */}
-                <div className="checkout_div">
-                    <div><Link to='/cart'><p>Continue to checkout</p></Link></div>
+                <div className="checkout_div" onClick={() => PaymentGateway(paymentInfo)}>
+                    <div>Continue to checkout</div>
                 </div>
 
                 {/* Holds the payment header and icons */}

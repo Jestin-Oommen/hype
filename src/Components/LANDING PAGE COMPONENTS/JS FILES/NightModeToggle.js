@@ -22,11 +22,11 @@ const NightModeToggle = () => {
             style={{ boxShadow: `0 0 5px ${buttonShadowColor}`}}  >
             {/* icons from ionicons */}
           {isNightMode? <ion-icon name="sunny"></ion-icon> : <ion-icon name="moon"></ion-icon>}
-          
           </button>
       </div>
           <div className='text'><p>{isNightMode ? 'Night Mode' : 'Light Mode'}</p></div>
-        
+          
+          
     </div>
   );
 };
