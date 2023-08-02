@@ -2,8 +2,9 @@ import React,{useState} from "react";
 import "./signin.css";
 import { Link, useNavigate } from "react-router-dom";
 import { initializeCart } from "../../store/slices/CartSlice";
+import { initializeOrder } from "../../store/slices/OrderSlice";
 import { initializeWishlist } from "../../store/slices/WishSlice";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addUser } from "../../store/slices/UserSlice"; 
 
 
@@ -13,7 +14,6 @@ import {db, auth} from "../config/firebase-config";
 import {createUserWithEmailAndPassword,
         signInWithEmailAndPassword} from "firebase/auth";
 
-import { doc, getDoc } from "firebase/firestore";
 
 import {ref, set, onValue} from 'firebase/database';
 
@@ -47,7 +47,8 @@ export default function Signin() {
       set(userRef, {
         userID: userID,
         cart:[],
-        wishlist:[]
+        wishlist:[],
+        order:[],
       })
       
 
@@ -75,17 +76,14 @@ export default function Signin() {
       // Read cart data and set Redux State
       onValue(ref(db, `Users/${userID}`,), (snapshot) =>{
         const userData = snapshot.val();
+        console.log("Used Data Fetched!")
         console.log(userData)
         dispatch(initializeCart(userData.cart));
         dispatch(initializeWishlist(userData.wishlist));
+        dispatch(initializeOrder(userData.order));
+        dispatch(addUser(data.user.uid));
       });
 
-      
-
-
-      // If logged in
-      // Dispatch the data and change redux state
-      dispatch(addUser(data));
 
       navigate("/");
     }

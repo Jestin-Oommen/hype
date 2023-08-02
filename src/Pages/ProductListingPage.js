@@ -4,29 +4,28 @@ import Footer from '../Components/Footer';
 import ProductCard from '../Components/PRODUCT LISTING PAGE COMPONENTS/JS FILES/ProductCard';
 import CategoryHeader from '../Components/PRODUCT LISTING PAGE COMPONENTS/JS FILES/CategoryHeader';
 import './ProductListingPage.css';
-import { useNavigate, useParams } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
-import { auth, db } from '../Components/config/firebase-config';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { db } from '../Components/config/firebase-config';
 
-import { ref, equalTo, onValue, query } from 'firebase/database'
+import { ref, equalTo, onValue, set } from 'firebase/database'
 
 export default function ProductListingPage() {
+  // State to store the products and their count from DB
   const [products, setProducts] = useState([]);
   const [nresults, setNresults] = useState();
 
   // Use the useParams hook to get the URL parameters
   const { gender, type } = useParams();
 
-  // ...
-
-useEffect(() => {
-  console.log('Filter received:', gender, type);
-  document.title = 'Hype - Products';
+  // Use effect to change the title
+  useEffect(() => {
+    document.title = `Hype - ${gender} ${type}`;
 
   try {
     if (gender && type) {
       // Create a reference to the 'Products'
-      const productsRef = ref(db, '/Products');
+      const productsRef = ref(db, 'Products');
 
       // Fetch all products from the database
       onValue(productsRef, (snapshot) => {
@@ -48,27 +47,11 @@ useEffect(() => {
   } catch (error) {
     console.error('Error fetching products:', error);
   }
-}, [gender, type]);
-
-// ...
-
-  
-  // Handles navifation
-  const navigate = useNavigate();
-
-
-  const handleSignOut = async () => {
-    try {
-      await signOut(auth);
-      console.log('Logged Out!');
-      navigate('/signin');
-    } catch (error) {
-      console.error('Error signing out:', error);
-    }
-  };
+}, []);
 
   return (
     <>
+    
       <Navbar opt1="MENS" opt2="WOMENS" opt3="KIDS" signoutButton={true} />
       <CategoryHeader category="Oversized T-shirts" nresults={nresults} />
 

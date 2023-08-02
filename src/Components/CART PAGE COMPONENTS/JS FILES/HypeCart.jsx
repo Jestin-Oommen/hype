@@ -10,15 +10,8 @@ import { set, ref } from "firebase/database";
 
 const HypeCart = () => {
   
-  
   // Fetch the user's status
-  const userID = useSelector(user => {
-    try{
-      return user.users.users.user.uid
-    }
-    catch{
-      return null
-    }})
+  const userID = useSelector(state => state.users.userID);
 
      // Fetch the statr from config store using useSelector
     const cartItems = useSelector(state => state.cart.cartItems);
@@ -38,6 +31,7 @@ const HypeCart = () => {
     // Use useEffect to listen for changes in cartItems and update Firestore
     useEffect(() => {
       if (userID) {
+        console.log(userID)
         // Convert the array to a map
         const cartItemsMap = cartItems.reduce((acc, item, index) => {
           acc[index] = item;

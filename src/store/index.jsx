@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import userSlice from './slices/UserSlice'; 
 import cartSlice from './slices/CartSlice'; 
 import wishSlice from './slices/WishSlice'; 
+import orderSlice from './slices/OrderSlice';
 
 const saveToLocalStorage = (state) => {
   try {
@@ -29,14 +30,15 @@ const store = configureStore({
         cart: cartSlice, // Access the reducer property of cartSlice
         users: userSlice, // Access the reducer property of userSlice
         wish: wishSlice,
+        order: orderSlice,
     },
 
     preloadedState: persistedState,
 });
 
 store.subscribe(() => {
-    const { cart, wish, users } = store.getState();
-    saveToLocalStorage({ cart, wish, users});
+    const { cart, wish, users, order } = store.getState();
+    saveToLocalStorage({ cart, wish, users, order});
   });
 
 export default store;

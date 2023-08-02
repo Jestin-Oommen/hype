@@ -8,9 +8,10 @@ import shakehand from '../IMAGES/shake_hand.png'
 import payment from '../IMAGES/payment.png'
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from "../../../store/slices/CartSlice";
+import { useEffect } from "react";
 
 // Firebase imports
-import { doc, setDoc } from "firebase/firestore";
+import { set, ref } from "firebase/database";
 import { db } from "../../config/firebase-config";
 
 
@@ -18,14 +19,7 @@ export default function ProductDetails(props) {
 
   // Create a dispatch to send data to the config store
   const dispatch = useDispatch();
-  const userID = useSelector(user => {
-    try{
-      console.log(user.users.users.user.uid)
-      return user.users.users.user.uid
-    }
-    catch{
-      return null
-    }})
+  const userID = useSelector(state => state.users.userID);
 
     // Fetch list fof items
     const cartItems = useSelector(state => state.cart.cartItems)
@@ -34,9 +28,22 @@ export default function ProductDetails(props) {
   // Function dispatch props to config store using addToCart which creates a slice
   const handleAddToCart = async() =>{
     dispatch(addToCart(props))
-    
-    await setDoc(doc(db, 'Cart', userID), {cart: cartItems})
   } 
+
+  // Use useEffect to listen for changes in cartItems and update Firestore
+  useEffect(() => {
+    if (userID) {
+      // Convert the arrap yo a map
+      const cartItemsMap = cartItems.reduce((acc, item, index) => {
+        acc[index] = item;
+        return acc;
+      }, {})
+
+      // Update the DB
+      set(ref(db, `Users/${userID}/cart`), cartItemsMap)
+    }
+  }, [cartItems]); // useEffect will be triggered whenever userID or cartItems change
+
 
   return (
     <div>

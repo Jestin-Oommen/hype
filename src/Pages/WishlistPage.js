@@ -6,36 +6,24 @@ import Navbar from '../Components/Navbar'
 import './WishlistPage.css'
 import Footer from '../Components/Footer'
 
-// Firebase imports
-import { db } from '../Components/config/firebase-config'
-import { setDoc, doc } from 'firebase/firestore';
 
 export default function WishlistPage() {
   useEffect(() => {
     document.title = "Hype - Wishlist";
   }, []);
 
-  // Fetch the userID from global redux state
-  const userID = useSelector(user => {
+  // ---------------- Handles Add To Cart & Wishlist -------------------
+
+  // Fetch the global wishlist state
+  const wishlist = useSelector(state => {
     try{
-      return user.users.users.user.uid
+      return state.wish.wishItems; 
     }
     catch{
-      return null
-    }})
+      return []
+    }
+  })
 
-    // Fetch the wishlist from the global redux state(while signin we are fetching from db and initializing the states with the db data)
-    const wishlist = useSelector(state => {
-      try{
-        console.log(state.wish.wishItems);
-        return state.wish.wishItems; 
-      }
-      catch{
-        return []
-      }
-    })
-
-    
 
   return (
     <>

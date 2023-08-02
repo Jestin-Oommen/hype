@@ -27,7 +27,7 @@ export default function ProductPage() {
             </div>
 
             <div>
-                <ProductDetails name={name} price={price}></ProductDetails>
+                <ProductDetails name={name} price={Number(price)}></ProductDetails>
             </div>
         </div>
         <Footer/>

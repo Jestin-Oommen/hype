@@ -6,12 +6,14 @@ import visa from '../IMAGES/visa 1.png'
 import gpay from '../IMAGES/google-pay 1.png'
 import razorpay from '../IMAGES/razorpaypng 1.png'
 import mastercard from '../IMAGES/mastercard 1.png'
-import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
+import {ref, set, onValue} from 'firebase/database';
 import { useEffect } from 'react'
 // import axios from 'axios'
 import PaymentGateway from './PaymentGateway' 
-
+import { db } from '../../config/firebase-config'
+import { useNavigate } from 'react-router-dom'
+import {paymentUpdate} from '../../../store/slices/OrderSlice'
 
 export default function PaymentPortal() {
     // Script loading function
@@ -40,19 +42,14 @@ export default function PaymentPortal() {
       }
     }
 
+    
     initializeRazorpay();
   }, []);
 
 
     // Fetching the userID of user logged in
-    const userID = useSelector(user => {
-        try{
-          console.log(user.users.users.user.uid)
-          return user.users.users.user.uid
-        }
-        catch{
-          return false
-        }})
+    const userID = useSelector(state => state.users.userID);
+    console.log(userID)
     
         // Fetch the statr from config store using useSelector
         const cartItems = useSelector(state => state.cart.cartItems);
@@ -67,9 +64,50 @@ export default function PaymentPortal() {
         const paymentInfo = {
           "totalCostInPaisa":totalCostInPaisa,
           "userID": userID,
-          "cartItems": cartItems,
+          "itemsOrdered": cartItems,
+          'dispatch': useDispatch(),
+          "uniqueProducts": cartItems.length
         }
-   
+        
+    // Create a dispatcher
+    const dispatch = useDispatch();
+
+    // Get the order history state
+    const orderItems = useSelector(state => state.order.orderItems)
+      
+    // Get the item ordered status(payment status)
+    const paymentStatus = useSelector(state => state.order.paymentStatus)
+    
+    console.log(paymentStatus)
+
+    // For navigation
+    const navigate = useNavigate();
+
+    // UseEffect to trach the redux state
+    useEffect(() => {
+      // If user is logged in and the payment is successful(item is ordered) update the db
+        if(userID && paymentStatus==1){
+            // Convert the arrap yo a map
+          const orderItemsMap = orderItems.reduce((acc, item, index) => {
+            acc[index] = item;
+            return acc;
+          }, {})
+          
+        // Update the DB
+        set(ref(db, `Users/${paymentInfo.userID}/order`), orderItemsMap)
+
+        // Update the paymentStatus back to 0
+        dispatch(paymentUpdate(0))
+        
+        console.log(paymentStatus);
+        // Navigate to order history
+        navigate('/orderhistory')
+          
+        }            
+      }, [paymentStatus]);
+
+
+
   return (
     <div>
         {/* Outer portion of the payment div */}

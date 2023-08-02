@@ -9,8 +9,8 @@ import searchicon from './search.png'
 import carticon from './cart.png'
 import usericon from './user.png'
 import { Link, useNavigate } from "react-router-dom";
-import { signOutFunc } from "../Pages/ProductListingPage";
 import { useDispatch } from 'react-redux';
+import {clearOrder} from '../store/slices/OrderSlice';
 
 
 // Firebase import 
@@ -44,6 +44,7 @@ const Navbar = (props) => {
     dispatch(clearCart([]));
     dispatch(clearWishlist([]));
     dispatch(clearUser([]));
+    dispatch(clearOrder([]));
 
     navigate('/signin');
    }
@@ -111,7 +112,6 @@ const Navbar = (props) => {
 };
 
 export default Navbar;
-
 
 
 

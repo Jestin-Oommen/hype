@@ -15,7 +15,7 @@ export default function Newin() {
   
     useEffect(() =>{
       try {
-        onValue(ref(db, "/New_Ins/"), snapshot => {
+        onValue(ref(db, "New_Ins"), snapshot => {
           // Fetch the data
           const data = snapshot.val();
   

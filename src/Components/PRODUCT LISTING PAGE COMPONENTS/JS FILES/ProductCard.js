@@ -16,14 +16,7 @@ export default function ProductCard(props) {
   // Create a dispatch to send data to the config store
   const dispatch = useDispatch();
 
-  const userID = useSelector(user => {
-    try{
-      console.log(user.users.users.user.uid)
-      return user.users.users.user.uid
-    }
-    catch{
-      return null
-    }})
+  const userID = useSelector(state => state.users.userID)
 
     // Fetch list fof items
     const cartItems = useSelector(state => state.cart.cartItems)
@@ -35,7 +28,7 @@ export default function ProductCard(props) {
 
   
 
-// Use useEffect to listen for changes in cartItems and update Firestore
+    // Use useEffect to listen for changes in cartItems and update Firestore
     useEffect(() => {
       if (userID) {
         // Convert the arrap yo a map
@@ -47,7 +40,7 @@ export default function ProductCard(props) {
         // Update the DB
         set(ref(db, `Users/${userID}/cart`), cartItemsMap)
       }
-    }, [userID, cartItems]); // useEffect will be triggered whenever userID or cartItems change
+    }, [cartItems]); // useEffect will be triggered whenever userID or cartItems change
 
   // Fetch the wishlist from the global redux state(while signin we are fetching from db and initializing the states with the db data)
    // Function to execute on click of addToWishlist
@@ -76,7 +69,7 @@ export default function ProductCard(props) {
     // Sync the DB with redux state
     set(ref(db, `Users/${userID}/wishlist`), wishlistMap)
     }
-  }, [userID, wishlist]); // useEffect will be triggered whenever userID or cartItems change
+  }, [wishlist]); // useEffect will be triggered whenever userID or cartItems change
 
   // Function to handle click on product
   const navigate = useNavigate();

@@ -3,12 +3,13 @@ import '../CSS FILES/category.css'
 import { Navigate, useNavigate } from 'react-router-dom'
 
 export default function Category(props) {
+
+  // Used for navigation to product listing page of given gender and category
   const navigate = useNavigate();
-  const routeToProducts = () =>{
-    
 
+  // Function to route to product listing on click
+  const routeToProducts = () =>{  
     navigate(`/products/${props.gender}/${props.type}`);
-
   }
   return (
     <>

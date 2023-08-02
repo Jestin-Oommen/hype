@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import {React} from "react";
 import "../CSS FILES/Gender_store.css";
 import menmodel from '../IMAGES/men-model.jpg';
 import womenmodel from '../IMAGES/women-model.jpg';
@@ -8,19 +8,14 @@ import { useNavigate } from 'react-router-dom';
 
 export default function GenderStore() {
 
-  // Get State of gender
-  const [gender, setGender] = useState("");
-
   // For Navigation
   const navigate = useNavigate();
 
   const showMenProducts = () => {
-    setGender("Men");
     navigate('/Mens', );
   }
 
   const showWomenProducts = () => {
-    setGender("Women");
     navigate('/Womens');
   }
 

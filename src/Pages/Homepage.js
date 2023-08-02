@@ -8,11 +8,14 @@ import Videocard from '../Components/LANDING PAGE COMPONENTS/JS FILES/Videocard'
 import Newin from '../Components/LANDING PAGE COMPONENTS/JS FILES/Newin'
 import Bestseller from '../Components/LANDING PAGE COMPONENTS/JS FILES/Bestseller'
 import Footer from '../Components/Footer'
-export default function Homepage(props) {
 
+
+
+export default function Homepage(props) {
   useEffect(() => {
     document.title = "Hype - Home";
   }, []);
+
 
   return (
     <>
