@@ -7,7 +7,7 @@ import gpay from '../IMAGES/google-pay 1.png'
 import razorpay from '../IMAGES/razorpaypng 1.png'
 import mastercard from '../IMAGES/mastercard 1.png'
 import { useSelector, useDispatch } from 'react-redux';
-import {ref, set, onValue} from 'firebase/database';
+import {ref, set} from 'firebase/database';
 import { useEffect } from 'react'
 // import axios from 'axios'
 import PaymentGateway from './PaymentGateway' 
@@ -86,7 +86,7 @@ export default function PaymentPortal() {
     // UseEffect to trach the redux state
     useEffect(() => {
       // If user is logged in and the payment is successful(item is ordered) update the db
-        if(userID && paymentStatus==1){
+        if(userID && paymentStatus===1){
             // Convert the arrap yo a map
           const orderItemsMap = orderItems.reduce((acc, item, index) => {
             acc[index] = item;

@@ -95,7 +95,7 @@ export default function ProductCard(props) {
 
           <div className="cart-button-div">
             <button onClick={handleAddToCart}>
-              <img src={cart_icon}></img>
+              <img src={cart_icon} alt='dressimage'></img>
             </button>
           </div>
 

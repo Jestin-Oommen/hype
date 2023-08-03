@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Imgdes from '../JS FILES/Imgdes';
+// import Imgdes from '../JS FILES/Imgdes';
 import ProductCard from '../../PRODUCT LISTING PAGE COMPONENTS/JS FILES/ProductCard';
 import '../CSS FILES/bestseller.css';
 import { db } from '../../config/firebase-config';
-import { collection, getDocs } from 'firebase/firestore';
+// import { collection, getDocs } from 'firebase/firestore';
 
 import {onValue, ref} from 'firebase/database'
 

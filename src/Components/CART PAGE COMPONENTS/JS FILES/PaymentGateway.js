@@ -1,8 +1,8 @@
 import React from 'react';
-import { db } from '../../config/firebase-config';
+// import { db } from '../../config/firebase-config';
 import { addToOrder, paymentUpdate } from '../../../store/slices/OrderSlice';
-import {useDispatch, useSelector} from 'react-redux'
-import { useEffect } from 'react';
+// import {useDispatch, useSelector} from 'react-redux'
+// import { useEffect } from 'react';
 
 
 

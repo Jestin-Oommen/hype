@@ -14,7 +14,7 @@ export default function OrderHistoryPage() {
   useEffect(() => {
     console.log(orderItems);
     document.title = 'Hype - Order History';
-  }, []);
+  });
 
   return (
     <>

@@ -33,7 +33,7 @@ export default function ProductDetails(props) {
   // Use useEffect to listen for changes in cartItems and update Firestore
   useEffect(() => {
     if (userID) {
-      // Convert the arrap yo a map
+      // Convert the array to a map
       const cartItemsMap = cartItems.reduce((acc, item, index) => {
         acc[index] = item;
         return acc;
@@ -43,7 +43,6 @@ export default function ProductDetails(props) {
       set(ref(db, `Users/${userID}/cart`), cartItemsMap)
     }
   }, [cartItems]); // useEffect will be triggered whenever userID or cartItems change
-
 
   return (
     <div>

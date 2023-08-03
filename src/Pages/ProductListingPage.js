@@ -5,10 +5,10 @@ import ProductCard from '../Components/PRODUCT LISTING PAGE COMPONENTS/JS FILES/
 import CategoryHeader from '../Components/PRODUCT LISTING PAGE COMPONENTS/JS FILES/CategoryHeader';
 import './ProductListingPage.css';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { db } from '../Components/config/firebase-config';
 
-import { ref, equalTo, onValue, set } from 'firebase/database'
+import { ref, onValue, } from 'firebase/database'
 
 export default function ProductListingPage() {
   // State to store the products and their count from DB
@@ -47,7 +47,7 @@ export default function ProductListingPage() {
   } catch (error) {
     console.error('Error fetching products:', error);
   }
-}, []);
+});
 
   return (
     <>

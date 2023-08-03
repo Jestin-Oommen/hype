@@ -9,7 +9,7 @@ import women_hoodie from '../IMAGES/women_hoodie.jpg';
 import women_os from '../IMAGES/women_os.jpg';
 import women_ls from '../IMAGES/women_ls.jpg';
 import women_re from '../IMAGES/women_reg.jpg';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 export default function Cat(props) {
   // Fetch the gender via url(from gender page to here)

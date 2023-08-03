@@ -52,8 +52,8 @@ const Navbar = (props) => {
   // Set default props
     Navbar.defaultProps = {
     opt1: '',
-    opt1: '',
-    opt1: '',
+    // opt1: '',
+    // opt1: '',
     signoutButton: false
  };
 

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import Imgdes from "./Imgdes";
+// import Imgdes from "./Imgdes";
 import ProductCard from "../../PRODUCT LISTING PAGE COMPONENTS/JS FILES/ProductCard";
 import "../CSS FILES/newin.css";
-import { collection, getDocs } from 'firebase/firestore';
+// import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../config/firebase-config';
 import { useEffect } from 'react';
-import { ref, get, onValue } from 'firebase/database'
+import { ref, onValue } from 'firebase/database'
 
 
 export default function Newin() {

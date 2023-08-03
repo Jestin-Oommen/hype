@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import Navbar from '../Components/Navbar'
 import Banner from '../Components/LANDING PAGE COMPONENTS/JS FILES/Banner'
 import NightModeToggle from '../Components/LANDING PAGE COMPONENTS/JS FILES/NightModeToggle'
