@@ -1,6 +1,9 @@
 .carousel-cards {
     display: flex;
     margin: 1rem;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .container-newin h1 {
@@ -12,6 +15,7 @@
     color: #000000;
     margin-top: 75px;
     margin-bottom: 75px;
+    text-align: center;
 }
 
 @media (max-width:600px){
@@ -20,4 +24,12 @@
         margin-bottom: 0px;
         font-size: xx-large;
     }
+    .carousel-cards {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem;
+        flex-direction: column;
+    }
+    
 }

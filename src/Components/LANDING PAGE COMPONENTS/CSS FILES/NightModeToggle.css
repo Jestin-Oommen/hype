@@ -6,7 +6,7 @@
   background-color: white;
   color: black;
   transition: background-color 0.5s ease, color 1s ease; /* Slow transition */
-  margin-bottom: 75px;
+  margin-bottom: 30px;
 }
 
 .text{
@@ -89,6 +89,26 @@
 
 @media (max-width:600px){
   .app{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+  }
+  .text{
+    font-size: x-large;
+  }
+  .content button {
+    height: 50px;
+    width: 50px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 0 transparent;
+    transition: box-shadow 0.5s ease;
+    display: inline-flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    
   }
 }

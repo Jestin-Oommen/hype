@@ -1,15 +1,23 @@
+.prophead{
+    margin-bottom: 20px;
+    cursor: pointer;
+}
 .prop img{
-    width: 350px;
+    width: 300px;
+}
+.prophead:hover{
+    filter: brightness(0.9);
+    transition: 0.3s;
 }
 .prop{
     border: 1px solid black;
 }
 .aval{
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .cat{
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -22,6 +30,15 @@
 
 @media (max-width:600px){
     .prop img{
-        width: 200px;
+        width: 230px;
+    }
+    .aval{
+        font-size: 15px;
+        font-weight:normal;
+    }
+    
+    .cat{
+        font-size: 25px;
+        font-weight: 600;
     }
 }

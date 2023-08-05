@@ -22,6 +22,7 @@ export default function Cat(props) {
 
         {gender === 'Mens' && (
           <>
+          <div className="mainDiv">
             <div className="image1 ">
               <Category
                 imgsrc={img1}
@@ -50,11 +51,13 @@ export default function Cat(props) {
                 gender={gender}
               />
             </div>
+            </div>
           </>
         )}
 
         {gender === 'Womens' && (
           <>
+          <div className="mainDiv">
             <div className="image1 ">
               <Category
                 imgsrc={women_hoodie}
@@ -83,11 +86,13 @@ export default function Cat(props) {
                 gender={gender}
               />
             </div>
+            </div>
           </>
         )}
 
         {(!gender || (gender !== 'Mens' && gender !== 'Womens')) && (
           <>
+          <div className="mainDiv">
             <div className="image1 ">
               <Category
                 imgsrc={img1}
@@ -111,6 +116,7 @@ export default function Cat(props) {
                 category="OVER SIZED T-SHIRT"
                 type="Oversized"
               />
+            </div>
             </div>
           </>
         )}

@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+.mainDiv{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 div.header{
     display: flex;
     flex-direction: column;
@@ -17,9 +24,6 @@ div.image1{
     flex-direction:row;
     justify-content: space-evenly;
     flex-wrap:wrap;
-    margin-left: 10px;
-    margin-right:10px;
-    margin-bottom:10px;
 
 }
 div.image2{
@@ -27,13 +31,11 @@ div.image2{
     flex-direction:row;
     justify-content: space-evenly;
     flex-wrap:wrap;
-    margin-left: 10px;
-    margin-right:10px;
 }
 
 div.prophead{
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
     display:flex;
     flex-wrap:wrap;
 }

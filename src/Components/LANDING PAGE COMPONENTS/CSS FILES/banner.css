@@ -2,12 +2,12 @@
     width: 100%;
 }
 .banner img{
-    margin-bottom: 75px;
+    margin-bottom: 30px;
     width: 100%;
 }
 
 @media(max-width:600px){
     .banner img{
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 }

@@ -249,4 +249,7 @@ color: #000000;
     font-weight: 700;
     margin: 15px 0px 20px 0px;
   }
+  .text-about{
+    font-size: 13px;
+  }
 }
