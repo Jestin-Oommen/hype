@@ -12,16 +12,11 @@
     font-weight: 700;
     font-size: 30px;
     color: #000000;
-}
-
-.product_name_div{
-    display:flex;
-    flex-wrap:wrap;
+    margin: 15px 0px;
 }
 
 .product_image_div{
     display:flex;
-
 }
 
 .discount_msg {
@@ -29,7 +24,6 @@
     align-items: center;
     width: 82px;
     height: 31px;
-    margin-top: 8px;
     margin-left: 40px;
     background: #DE0202;
 }
@@ -39,16 +33,12 @@
     margin-bottom:2px;
     width: 66.27px;
     height: 19px;
-    
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
     line-height: 17px;
-
     color: #FFFFFF;
-
 }
 
 
@@ -59,19 +49,18 @@
     font-weight: 400;
     font-size: 30px;
     color: #000000;
-    margin-top: 5px;
+    margin: 15px 0px;
 }
 
 .product_price_div{
     display:flex;
     flex-direction:row;
-
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .product_review_div h4{
     width: 85px;
-
-
     font-family: 'Inter' , sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -79,7 +68,6 @@
     line-height: 24px;
     margin-top: 5px;
     color: #000000;
-
 }
 
 .product_colour_div{
@@ -87,12 +75,10 @@
     flex-direction:row;
     justify-content: flex-start;
     flex-wrap:wrap;
-
 }
 
 .product_colour_div h4{
     width: 70px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
@@ -100,7 +86,6 @@
     line-height: 24px;
     margin-top: 5px;
     color: #000000;
-
 }
 
 .colour_collection{
@@ -108,8 +93,7 @@
     flex-direction:row;
     justify-content: space-evenly;
     margin-top:9px;
-    padding-right: 100px;;
-   
+    padding-right: 100px;
 }
 
 .colour_option{
@@ -117,7 +101,6 @@
     height: 13px;
     margin:4px;
     border-radius: 50%;
-
     background: #FF0000;
 }
 
@@ -125,6 +108,7 @@
     display:flex;
     flex-wrap:wrap;
     justify-content: space-evenly;
+    align-items: center;
     flex-direction:row;
 }
 
@@ -137,65 +121,63 @@
 
 .product_size_div{
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
     flex-wrap:wrap;
-    justify-content: space-between;
-}
-
-.product_size{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    
+    justify-content:flex-start;
+    margin-bottom: 40px;
 }
 
 .size_button_div{
-    display:flex;
-    justify-content: center;
     background: #FFFFFF;
-    border: 1px solid #000000; 
-
-    margin:18px;
-    
-    width: 135px;
-    height: 56px;
+    border: 1px solid #000000;
+    margin-left:9px;
+    width: 77px;
+    height: 37px;
+    text-align: center;
+    color: #000000;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 39px;
+    /* identical to box height */
+    text-align: center;
 }
 
-.size_text{
+
+.size_text h4{
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
-
     color: #000000;
-
+    margin: 15px 0px;
 }
 
-
-.add_to_cart_button_div div{
+.add_to_cart_button_div{
     display:flex;
     flex-wrap:wrap;
     align-items:center;
-    width: 639px;
-    height: 74px;
-    margin-top:20px;
-    margin-left:80px;
-
-    background: #000000;
+    justify-content: center;
 }
 
-.add_to_cart_button_div img{
-    width: 116px;
-    height: 24px; 
-    padding-left:281px;
+.add_to_cart_button_div button{
+    text-align: center;
+    width: 600px;
+    height: 60px;
+    font-size: 25px;
+    color: #FFFFFF;
+    background: #000000;
+    cursor: pointer;
+    border: 0;
+    border-radius: 3px;
 }
 
 .product_review_div{
     display:flex;
     flex-wrap:wrap;
     flex-direction:row;
-
 }
 
 .reviews_stars{
@@ -228,24 +210,21 @@
     margin:18px;
 }
 
-
-.size_button_div a{
-    width: 96px;
-    height: 39px;
-    padding-top:8px;
-   
-    
+.size_button_div:hover {
+    background: #000000f1;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    margin-left:9px;
+    width: 77px;
+    height: 37px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 32px;
+    font-size: 25px;
     line-height: 39px;
-    /* identical to box height */
-
     text-align: center;
-
-    color: #000000;
 }
+
 @media(max-width:680px){
     .product_name_div{
         padding-left: 7%;

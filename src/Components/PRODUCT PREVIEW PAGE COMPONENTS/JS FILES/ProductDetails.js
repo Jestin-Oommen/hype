@@ -1,34 +1,32 @@
 import React from "react";
 import "../CSS FILES/ProductDetails.css";
-import stars from '../IMAGES/reviews_star.png'
-import icontext from '../IMAGES/add_icon_text.png'
-import deliveryicon from '../IMAGES/delivery_icon.png'
-import giftbox from '../IMAGES/gift_box.png'
-import shakehand from '../IMAGES/shake_hand.png'
-import payment from '../IMAGES/payment.png'
-import { useSelector, useDispatch } from 'react-redux';
+// import stars from '../IMAGES/reviews_star.png'
+import icontext from "../IMAGES/add_icon_text.png";
+import deliveryicon from "../IMAGES/delivery_icon.png";
+import giftbox from "../IMAGES/gift_box.png";
+import shakehand from "../IMAGES/shake_hand.png";
+import payment from "../IMAGES/payment.png";
+import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../../../store/slices/CartSlice";
 import { useEffect } from "react";
+import { TbShoppingCartPlus } from 'react-icons/tb'
 
 // Firebase imports
 import { set, ref } from "firebase/database";
 import { db } from "../../config/firebase-config";
 
-
 export default function ProductDetails(props) {
-
   // Create a dispatch to send data to the config store
   const dispatch = useDispatch();
-  const userID = useSelector(state => state.users.userID);
+  const userID = useSelector((state) => state.users.userID);
 
-    // Fetch list fof items
-    const cartItems = useSelector(state => state.cart.cartItems)
-  
+  // Fetch list fof items
+  const cartItems = useSelector((state) => state.cart.cartItems);
 
   // Function dispatch props to config store using addToCart which creates a slice
-  const handleAddToCart = async() =>{
-    dispatch(addToCart(props))
-  } 
+  const handleAddToCart = async () => {
+    dispatch(addToCart(props));
+  };
 
   // Use useEffect to listen for changes in cartItems and update Firestore
   useEffect(() => {
@@ -37,10 +35,10 @@ export default function ProductDetails(props) {
       const cartItemsMap = cartItems.reduce((acc, item, index) => {
         acc[index] = item;
         return acc;
-      }, {})
+      }, {});
 
       // Update the DB
-      set(ref(db, `Users/${userID}/cart`), cartItemsMap)
+      set(ref(db, `Users/${userID}/cart`), cartItemsMap);
     }
   }, [cartItems]); // useEffect will be triggered whenever userID or cartItems change
 
@@ -66,7 +64,7 @@ export default function ProductDetails(props) {
         </div>
 
         {/* Holds reviews and stars of product */}
-        <div className="product_review_div">
+        {/* <div className="product_review_div">
           <div>
             <h4>Reviews</h4>
           </div>
@@ -88,10 +86,10 @@ export default function ProductDetails(props) {
               <img src={stars} alt="star review"></img>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Holds Colour option of product */}
-        <div className="product_colour_div">
+        {/* <div className="product_colour_div">
           <div>
             <h4>Colour</h4>
           </div>
@@ -102,7 +100,7 @@ export default function ProductDetails(props) {
             <div className="colour_option"></div>
             <div className="colour_option"></div>
           </div>
-        </div>
+        </div> */}
 
         <div className="size_text">
           <h4>Sizes</h4>
@@ -110,38 +108,31 @@ export default function ProductDetails(props) {
 
         {/* All the buttons with sizes */}
         <div className="product_size_div">
-          <div className="product_size">
-            <div className="size_button_div">
-              <a href="/">XS</a>
-            </div>
+          <a href="/">
+            <div className="size_button_div">XS</div>
+          </a>
 
-            <div className="size_button_div">
-              <a href="/">S</a>
-            </div>
+          <a href="/">
+            <div className="size_button_div">S</div>
+          </a>
 
-            <div className="size_button_div">
-              <a href="/">M</a>
-            </div>
-          </div>
-
-          <div className="product_size">
-            <div className="size_button_div">
-              <a href="/">L</a>
-            </div>
-            <div className="size_button_div">
-              <a href="/">XL</a>
-            </div>
-            <div className="size_button_div">
-              <a href="/">XXL</a>
-            </div>
-          </div>
+          <a href="/">
+            <div className="size_button_div">M</div>
+          </a>
+          <a href="/">
+            <div className="size_button_div">L</div>
+          </a>
+          <a href="/">
+            <div className="size_button_div">XL</div>
+          </a>
+          <a href="/">
+            <div className="size_button_div">XXL</div>
+          </a>
         </div>
 
         {/* Add to cart button */}
         <div className="add_to_cart_button_div" onClick={handleAddToCart}>
-          <div>
-            <img src={icontext} alt="icon"></img>
-          </div>
+          <button> <TbShoppingCartPlus style={{color:"white", width:25, height:25}}/> Add </button>
         </div>
 
         {/* 4 points with icons after add button */}

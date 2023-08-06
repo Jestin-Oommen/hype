@@ -22,6 +22,7 @@ h4.title{
 div.image1{
     display: flex;
     flex-direction:row;
+    align-items: center;
     justify-content: space-evenly;
     flex-wrap:wrap;
 
@@ -29,6 +30,7 @@ div.image1{
 div.image2{
     display: flex;
     flex-direction:row;
+    align-items: center;
     justify-content: space-evenly;
     flex-wrap:wrap;
 }

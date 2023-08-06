@@ -7,7 +7,6 @@ import {
   AiOutlineHeart,
   AiOutlineSearch,
   AiOutlineShoppingCart,
-  AiOutlineUser,
   AiOutlineUserAdd,
 } from "react-icons/ai";
 import "./Navbar.css";
@@ -19,6 +18,7 @@ import { clearOrder } from "../store/slices/OrderSlice";
 // Firebase import
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "./config/firebase-config";
+import MenuBar from "./MenuBar";
 
 const Navbar = (props) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -91,6 +91,7 @@ const Navbar = (props) => {
     signoutButton: false,
   };
 
+  
   return (
     <>
       <div className="navbar ">
@@ -163,19 +164,7 @@ const Navbar = (props) => {
           </Link>
 
           {user ? (
-            <Link>
-              <AiOutlineUser
-                style={{
-                  height: 30,
-                  width: 30,
-                  cursor: "pointer",
-                  marginRight: 10,
-                  color: isHovering4 ? "#33FF95" : "black",
-                }}
-                onMouseEnter={handleMouseEnter4}
-                onMouseLeave={handleMouseLeave4}
-              />
-            </Link>
+            <MenuBar/>
           ) : (
             <Link to="/signin">
               <AiOutlineUserAdd

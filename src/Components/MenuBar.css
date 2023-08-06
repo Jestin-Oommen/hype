@@ -1,0 +1,45 @@
+.user-btn {
+	padding: 5px;
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: rgb(0, 0, 0);
+	visibility: visible;
+	opacity: 1;
+	font-size: 1.8rem;
+}
+.userOptions{
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: white;
+    transition: 1s;
+    transform: translateY(-100vh);
+}
+.responsive_nav {
+    transform: translateY(100vh);
+    z-index: 1;
+}
+.nav-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+.userButtons {
+    font-size: 1.5rem;
+    color: black;
+    font-weight: 400;
+}
+.userButtons:hover {
+    font-size: 1.5rem;
+    color: black;
+    font-weight: 500;
+}
